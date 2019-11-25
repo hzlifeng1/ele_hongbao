@@ -2,6 +2,7 @@ import requests
 from apscheduler.schedulers.blocking import BlockingScheduler
 import datetime
 import configparser
+import time
 
 config = configparser.ConfigParser()
 config.read("config.ini",encoding='UTF8')
@@ -28,6 +29,7 @@ def hongbao():
     header = {'User-Agent': user_agent,
               'Cookie': cookie,
               'Content-Type': 'application/x-www-form-urlencoded'}
+    time.sleep(0.1)
     res = requests.post(url=url1,data=data,headers=header)
     print(datetime.datetime.now().strftime('%m-%d %H:%M:%S.%f')+res.text)
 
